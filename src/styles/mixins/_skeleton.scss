@@ -1,0 +1,24 @@
+@mixin skeleton(
+  $radius: 5%,
+  $base: #e0e0e0,
+  $highlight: #f0f0f0,
+  $duration: 1.6s
+) {
+  position: relative;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $radius;
+    background: linear-gradient(
+      90deg,
+      $base 25%,
+      $highlight 37%,
+      $base 63%
+    );
+    background-size: 400% 100%;
+    animation: skeleton-shimmer $duration ease-in-out infinite;
+  }
+}

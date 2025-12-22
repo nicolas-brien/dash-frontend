@@ -1,0 +1,123 @@
+@use '../../styles/mixins' as *;
+
+.input {
+    width: 100%;
+    font-family: inherit;
+
+    padding-bottom: 0.8rem;
+
+    &__label {
+        display: block;
+        margin-bottom: 0.25em;
+        font-size: 0.9em;
+        color: #333;
+    }
+
+    &__wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 2.75em;
+
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        background-color: #fff;
+        transition: border-color 0.2s ease;
+    }
+
+    &__field {
+        flex: 1;
+        height: 100%;
+        padding: 0 0.75em;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 1em;
+        color: #000;
+
+        &::placeholder {
+            color: #999;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    &__icon {
+        margin-left: 0.5em;
+        color: #777;
+        display: flex;
+        align-items: center;
+    }
+
+    &__clear {
+        position: absolute;
+        right: 0.5em;
+        background: none;
+        border: none;
+        font-size: 1.25em;
+        line-height: 1;
+        cursor: pointer;
+        color: #777;
+
+        &:hover {
+            color: #000;
+        }
+    }
+
+    &__helper {
+        margin-top: 0.25em;
+        font-size: 0.8em;
+        color: #666;
+
+        &--error {
+            color: #e53935;
+        }
+    }
+
+    /* States */
+
+    &:focus-within .input__wrapper {
+        border-color: #2b6cff;
+    }
+
+    &--error .input__wrapper {
+        border-color: #e53935;
+    }
+
+    &--disabled {
+        .input__wrapper {
+            background-color: #f2f2f2;
+            border-color: #ddd;
+        }
+
+        .input__field {
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        .input__clear {
+            display: none;
+        }
+    }
+
+    &--loading {
+        .input__wrapper {
+            @include skeleton();
+
+            background: #e0e0e0;
+            border-color: #e0e0e0;
+            color: transparent;
+            caret-color: transparent;
+        }
+    }
+
+    &--clearable .input__field {
+        padding-right: 2em;
+    }
+
+    &--with-icon .input__field {
+        padding-left: 0.25em;
+    }
+}

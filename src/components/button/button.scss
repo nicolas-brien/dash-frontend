@@ -1,0 +1,128 @@
+@use '../../styles/mixins' as *;
+
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+
+    height: 2.4em; // slightly shorter than inputs
+    padding: 0 1em;
+
+    border-radius: 0.5em;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    /* Label */
+    &__label {
+        white-space: nowrap;
+    }
+
+    /* Icon */
+    &__icon {
+        display: inline-flex;
+
+        svg {
+            width: 1.1em;
+            height: 1.1em;
+        }
+    }
+
+    /* VARIANTS */
+
+    &--secondary {
+        background: #fff;
+        color: #1e60ff;
+        border-color: #1e60ff;
+
+        &:hover:not(:disabled) {
+            background: #eef3ff;
+        }
+    }
+
+    &--primary {
+        background: #416bcf;
+        color: #fff;
+
+        &:hover:not(:disabled) {
+            background: #174bd1;
+        }
+    }
+
+    &--link {
+        background: none;
+        border: none;
+        color: #1e60ff;
+        padding:0;
+        height: auto;
+
+        &:hover:not(:disabled) {
+            color: #11378f;
+        }
+    }
+
+    &--danger {
+        background: #e53935;
+        color: #fff;
+
+        &:hover:not(:disabled) {
+            background: #c62828;
+        }
+    }
+
+    &--success {
+        background: #2e7d32;
+        color: #fff;
+
+        &:hover:not(:disabled) {
+            background: #1b5e20;
+        }
+    }
+
+    /* LOADING (skeleton) */
+    &--loading {
+        @include skeleton(0.5em);
+
+        .button__label,
+        .button__icon {
+            visibility: hidden;
+        }
+    }
+
+    /* SUBMITTING STATE */
+    &--submitting {
+        pointer-events: none;
+
+        .button__label,
+        .button__icon {
+            visibility: hidden;
+        }
+    }
+
+    &__spinner {
+        position: absolute;
+        width: 1.2em;
+        height: 1.2em;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: button-spin 0.8s linear infinite;
+    }
+}
+
+/* Spinner animation */
+@keyframes button-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
