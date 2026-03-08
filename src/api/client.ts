@@ -14,6 +14,7 @@ export async function auth<T>(
     const token = tokenStorage.get();
     const res = await fetch(`${BASE_URL}/auth${path}`, {
         headers: {
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
             ...(options.headers || {})

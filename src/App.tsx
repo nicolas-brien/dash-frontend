@@ -9,6 +9,7 @@ import { useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import { Admin } from './pages/admin/Admin';
 import UserForm from './pages/settings/UserForm';
+import EditUser from './pages/admin/user/EditUser';
 
 function Home() {
   return <h1>Home</h1>;
@@ -60,7 +61,7 @@ function App() {
             <Route path="/admin" element={<Admin />}>
               <Route path="networks" element={<Networks />} />
               <Route path="users" element={<Users />} />
-              <Route path="users/:id" element={<UserForm />} />
+              <Route path="users/:id" element={<EditUser />} />
             </Route>
             <Route path="/settings" element={<Settings />}>
               <Route path="network" element={<Networks />} />

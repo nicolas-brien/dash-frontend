@@ -37,7 +37,9 @@ const Users = () => {
                 <RegisterForm />
             </Modal>
             }
-            <Button variant="primary" onClick={handleCreateClick}>Create</Button> 
+            <div style={{ textAlign:'right', paddingBottom: '0.8em' }}>
+                <Button variant="primary" onClick={handleCreateClick}>Create</Button>
+            </div>
             <UsersTable />
         </div>
     );
