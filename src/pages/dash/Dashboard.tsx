@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { dashesApi } from "../../api/dashes.api";
+import type { Dash } from "../../types/dash";
 
 import { Page } from "../../components/page/Page";
 import { Input } from "../../components/input/Input";
@@ -8,6 +9,9 @@ import { Input } from "../../components/input/Input";
 import Pencil from "../../svg/pencil.svg?react";
 import Trash from "../../svg/trash.svg?react";
 import Check from "../../svg/check.svg?react";
+import Lock from "../../svg/lock.svg?react";
+import Unlock from "../../svg/unlock.svg?react";
+import Plus from "../../svg/plus.svg?react";
 
 import Button from "../../components/button/Button";
 import Modal from "../../components/modal/Modal";
@@ -24,7 +28,9 @@ import "./dashboard.scss";
 
 export const Dashboard = () => {
     const { dashId } = useParams();
-    const [dash, setDash] = useState(defaultDash);
+    const [dash, setDash] = useState<Dash>(defaultDash);
+    const [blocks, setBlocks] = useState<any[]>([]);
+    const [isLocked, setIsLocked] = useState(true);
     const [newName, setNewName] = useState('');
     const [isEditingName, setIsEditingName] = useState(false);
     const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
@@ -62,6 +68,10 @@ export const Dashboard = () => {
         await dashesApi.delete(dashId);
         setIsDeleting(false);
         setIsConfirmDeleteOpen(false);
+    }
+
+    const handleAddBlock = () => {
+        setBlocks([...blocks, { i: `block${blocks.length}`, x: 8, y: 0, w: 2, h: 3 }])
     }
 
     useEffect(() => {
@@ -105,7 +115,11 @@ export const Dashboard = () => {
                     </div>
                 </div>
                 <div className="dashboard__container">
-                    <Grid className="dashboard__grid" />
+                    <Grid className="dashboard__grid" isLocked={isLocked} layout={blocks} onLayoutChange={(b) => setBlocks(b)} />
+                </div>
+                <div className="dashboard__controls-container">
+                    <Button id="dashboard-lock" onClick={() => setIsLocked(!isLocked)} icon={isLocked ? <Lock /> : <Unlock />} variant={isLocked ? "primary" : "secondary" } />
+                    <Button id="dashboard-controls-add" onClick={handleAddBlock} icon={<Plus />} variant="secondary" disabled={isLocked} />
                 </div>
             </div>
         </Page>

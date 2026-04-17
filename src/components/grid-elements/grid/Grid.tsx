@@ -10,11 +10,12 @@ import "./grid.scss";
 
 interface GridProps {
     className?: string,
-    layout?: number[][],
+    isLocked: boolean,
+    layout: any[],
     items?: number,
     rowHeight?: number,
     cols?: number,
-    onLayoutChange?: () => void
+    onLayoutChange: (newLayout: any) => void
 }
 
 const exampleLayout = [
@@ -46,17 +47,17 @@ const exampleLayout = [
 ];
 
 export const Grid = (props: GridProps) => {
-    const [layout, setLayout] = useState(exampleLayout);
+    // const [layout, setLayout] = useState(props.layout || exampleLayout);
     const { width, containerRef, mounted } = useContainerWidth();
 
     const renderBlocks = () => {
         return (
-            layout.map((b) => <div key={b.i}><Block Id={b.i} Text={b.i} /></div>)
+            props.layout.map((b) => <div key={b.i}><Block Id={b.i} Text={b.i} isLocked={props.isLocked} /></div>)
         )
     }
 
     const handleLayoutChange = (newLayout: any) => {
-        console.log(newLayout);
+        props.onLayoutChange(newLayout);
     }
 
     return (
@@ -64,9 +65,11 @@ export const Grid = (props: GridProps) => {
             {mounted &&
                 <ReactGridLayout
                     width={width}
-                    layout={layout}
+                    layout={props.layout}
                     gridConfig={{ cols: 12, rowHeight: 30 }}
                     onLayoutChange={handleLayoutChange}
+                    dragConfig={{enabled: !props.isLocked}}
+                    resizeConfig={{enabled: !props.isLocked}}
                 >
                     {renderBlocks()}
                 </ReactGridLayout>
