@@ -29,6 +29,14 @@ export async function auth<T>(
     const body = isJson ? await res.json() : null;
 
     if (!res.ok) {
+        if (res.status === 401) {
+            tokenStorage.clear();
+            window.location.href = '/login';
+            return Promise.reject(new ApiException({
+                status: res.status,
+                message: 'Unauthorized',
+            }));
+        }
         throw new ApiException({
             status: res.status,
             message: body?.message || 'Unexpected error',

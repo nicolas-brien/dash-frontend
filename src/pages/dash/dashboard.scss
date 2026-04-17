@@ -1,0 +1,39 @@
+.dashboard {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 4.8rem;
+    }
+
+    &__title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        & > h1 {
+            height: 2.4rem;
+            font-size: 1.8rem;
+        }
+
+        & > .input {
+            padding-bottom: 0;
+        }
+    }
+
+    &__settings {
+        display: inline-flex;
+        gap: 0.8rem;
+
+        & > h5 {
+            color: #888;
+            margin: auto auto;
+        }
+    }
+
+    &__container {
+        width: 100%;
+        height: calc(100vh - 4.8rem);
+    }
+}

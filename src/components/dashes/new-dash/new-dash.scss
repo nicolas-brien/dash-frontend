@@ -1,0 +1,21 @@
+@use '../../../styles/mixins' as *;
+
+.new-dash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16rem;
+    height: 16rem;
+
+    border: 2px dashed #1e60ff;
+    border-radius: 10%;
+
+    font-size: 6rem;
+    color: #1e60ff;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #9ab8ff;
+    }
+}

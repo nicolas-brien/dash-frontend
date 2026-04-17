@@ -43,6 +43,7 @@
     &--secondary {
         background: #fff;
         color: #1e60ff;
+        fill: #1e60ff;
         border-color: #1e60ff;
 
         &:hover:not(:disabled) {
@@ -53,6 +54,7 @@
     &--primary {
         background: #416bcf;
         color: #fff;
+        fill: #fff;
 
         &:hover:not(:disabled) {
             background: #174bd1;
@@ -63,6 +65,7 @@
         background: none;
         border: none;
         color: #1e60ff;
+        fill: #1e60ff;
         padding:0;
         height: auto;
 
@@ -74,6 +77,7 @@
     &--danger {
         background: #e53935;
         color: #fff;
+        fill: #fff;
 
         &:hover:not(:disabled) {
             background: #c62828;
@@ -83,6 +87,7 @@
     &--success {
         background: #2e7d32;
         color: #fff;
+        fill: #fff;
 
         &:hover:not(:disabled) {
             background: #1b5e20;

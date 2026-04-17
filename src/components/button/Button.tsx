@@ -47,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
                 <span className="button__icon">{icon}</span>
             )}
 
-            <span className="button__label">{children}</span>
+            {children && <span className="button__label">{children}</span>}
 
             {!submitting && icon && iconPosition === 'right' && (
                 <span className="button__icon">{icon}</span>
