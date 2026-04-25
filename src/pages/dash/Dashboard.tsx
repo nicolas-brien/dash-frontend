@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { dashesApi } from "api/dashes.api";
 import { useToast } from "hooks/useToast";
-import type { Dash } from "types/dash";
+import type { Block, Dash } from "types/dash";
 
 import { Page } from "components/page/Page";
 import { Toolbox } from "components/dashboard/toolbox/Toolbox";
@@ -24,7 +24,7 @@ export const Dashboard = () => {
     const toast = useToast();
     const { id } = useParams();
     const [dash, setDash] = useState<Dash>(defaultDash);
-    const [blocks, setBlocks] = useState<any[]>([]);
+    const [blocks, setBlocks] = useState<Block[]>([]);
     const [isLocked, setIsLocked] = useState(true);
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -33,7 +33,8 @@ export const Dashboard = () => {
     const fetch = async (id: string) => {
         try {
             const d = await dashesApi.getById(id);
-            setDash(d);
+            setDash(d.dash);
+            setBlocks(d.blocks);
         } catch (e) {
             toast.error(e, "Dashboard");
             navigate("/");
@@ -41,7 +42,7 @@ export const Dashboard = () => {
     }
 
     const handleNameUpdate = async (newName: string) => {
-        await dashesApi.update(dashId, { name: newName });
+        await dashesApi.updateName(dashId, { name: newName });
         setDash({ ...dash, name: newName, updatedAt: new Date().toISOString() });
     }
 
@@ -55,7 +56,20 @@ export const Dashboard = () => {
     }
 
     const handleAddBlock = () => {
-        setBlocks([...blocks, { i: `block${blocks.length}`, x: 8, y: 0, w: 2, h: 3 }])
+        setBlocks(prev => [
+            ...prev,
+            {
+                i: crypto.randomUUID(),
+                x: 8,
+                y: 0,
+                w: 2,
+                h: 3
+            }
+        ]);
+    }
+
+    const handleSave = async () => {
+        await dashesApi.update(dashId, { name: dash.name, blocks });
     }
 
     useEffect(() => {
@@ -76,14 +90,14 @@ export const Dashboard = () => {
                         <Title title={dash.name} onTitleUpdate={handleNameUpdate} />
                     </div>
                     <div className="dashboard__settings">
-                        <Controls name={dash.name} lastUpdatedAt={dash.updatedAt} isDirty={true} onSave={() => {}} isDeleting={isDeleting} onDelete={handleDeleteDashboard} />
+                        <Controls name={dash.name} lastUpdatedAt={dash.updatedAt} isDirty={true} onSave={handleSave} isDeleting={isDeleting} onDelete={handleDeleteDashboard} />
                     </div>
                 </div>
                 <div className="dashboard__container">
                     <Grid className="dashboard__grid" isLocked={isLocked} layout={blocks} onLayoutChange={(b) => setBlocks(b)} />
                 </div>
                 <div className="dashboard__toolbox-container">
-                    <Toolbox isLocked={isLocked} toggleLock={() => setIsLocked(!isLocked)} isDirty={true} onSave={() => {}} onAddBlock={handleAddBlock} />
+                    <Toolbox isLocked={isLocked} toggleLock={() => setIsLocked(!isLocked)} isDirty={true} onSave={handleSave} onAddBlock={handleAddBlock} />
                 </div>
             </div>
         </Page>
