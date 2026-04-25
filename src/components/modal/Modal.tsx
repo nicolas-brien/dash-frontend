@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+
 import Button from '../button/Button';
 import { ModalVariant, ModalSize } from './ModalTypes.ts';
 

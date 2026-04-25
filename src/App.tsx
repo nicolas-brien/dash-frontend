@@ -54,7 +54,7 @@ function App() {
       <main style={{ paddingTop: '4em' }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashes/:dashId" element={<Dashboard />} />
+          <Route path="/dashes/:id" element={<Dashboard />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/about" element={<About />} />
           <Route path="/admin" element={<Admin />}>

@@ -1,0 +1,14 @@
+.title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    &>h1 {
+        height: 2.4rem;
+        font-size: 1.8rem;
+    }
+
+    &>.input {
+        padding-bottom: 0;
+    }
+}

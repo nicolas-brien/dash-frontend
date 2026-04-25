@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import "./toast.css";
+import "./toast.scss";
 
 export type ToastVariant = "success" | "error" | "info";
 

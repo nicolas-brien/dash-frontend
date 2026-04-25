@@ -1,0 +1,9 @@
+.controls {
+    display: inline-flex;
+    gap: 0.8rem;
+
+    & > h5 {
+        color: #888;
+        margin: auto auto;
+    }
+}
