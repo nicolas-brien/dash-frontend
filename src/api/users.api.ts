@@ -1,5 +1,5 @@
 import { api } from './client';
-import type { User, CreateUserDto, UpdateUserDto } from '../types/user';
+import type { User, CreateUserDto, UpdateUserDto } from 'types/user';
 
 export const usersApi = {
     list: () => api<User[]>('/users'),

@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
-import EditUserForm from "../../../composed-components/user/EditUserForm";
-import { useUser } from "../../../hooks/useUser";
 import { useEffect, useState } from "react";
-import type { User } from "../../../types/user";
+
+import { useUser } from "hooks/useUser";
+
+import EditUserForm from "composed-components/user/EditUserForm";
+import type { User } from "types/user";
 
 const EditUser = () => {
     const { id } = useParams<{ id: string }>();

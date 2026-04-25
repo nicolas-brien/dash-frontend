@@ -1,12 +1,12 @@
 import "./controls.scss";
 import { useState } from "react";
 
-import Button from "../../../components/button/Button";
-import Modal from "../../../components/modal/Modal";
-import { ModalSize, ModalVariant } from "../../../components/modal/ModalTypes";
+import Button from "components/button/Button";
+import Modal from "components/modal/Modal";
+import { ModalSize, ModalVariant } from "components/modal/ModalTypes";
 
-import Save from "../../../svg/save.svg?react";
-import Trash from "../../../svg/trash.svg?react";
+import Save from "svg/save.svg?react";
+import Trash from "svg/trash.svg?react";
 
 interface ControlsProps {
     name: string,

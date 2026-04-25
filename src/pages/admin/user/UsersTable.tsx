@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { User } from "../../../types/user";
-import { useAuth } from "../../../context/AuthContext";
-import { useUsers } from "../../../hooks/useUsers";
-import { useUser } from "../../../hooks/useUser";
 
-import Button from "../../../components/button/Button";
-import Modal from "../../../components/modal/Modal";
-import Table from "../../../components/table/Table";
-import { ModalSize, ModalVariant } from "../../../components/modal/ModalTypes";
+import type { User } from "types/user";
+import { useAuth } from "context/AuthContext";
+import { useUsers } from "hooks/useUsers";
+import { useUser } from "hooks/useUser";
+
+import Button from "components/button/Button";
+import Modal from "components/modal/Modal";
+import Table from "components/table/Table";
+import { ModalSize, ModalVariant } from "components/modal/ModalTypes";
 
 const UsersTable = () => {
     const navigate = useNavigate();

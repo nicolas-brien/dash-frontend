@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { usersApi } from '../api/users.api';
-import { ApiException } from '../api/errors';
-import type { CreateUserDto, UpdateUserDto } from '../types/user';
+
+import { usersApi } from 'api/users.api';
+import { ApiException } from 'api/errors';
+import type { CreateUserDto, UpdateUserDto } from 'types/user';
 
 export const useUser = () => {
     const [loading, setLoading] = useState(false);

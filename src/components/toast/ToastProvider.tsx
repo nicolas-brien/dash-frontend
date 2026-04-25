@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react";
 
+import { ToastContext } from "context/ToastContext";
+
 import { Toast, type ToastVariant } from "./Toast";
-import { ToastContext } from "../../context/ToastContext";
 
 type ToastItem = {
   id: number;

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-import { useUser } from '../../../hooks/useUser';
-import UsersTable from './UsersTable';
+import { useUser } from 'hooks/useUser';
 
-import Button from '../../../components/button/Button';
-import Modal from '../../../components/modal/Modal';
-import { ModalSize, ModalVariant } from '../../../components/modal/ModalTypes';
+import Button from 'components/button/Button';
+import Modal from 'components/modal/Modal';
+import { ModalSize, ModalVariant } from 'components/modal/ModalTypes';
+
+import UsersTable from './UsersTable';
 import RegisterForm from '../../register/Register';
 
 const Users = () => {

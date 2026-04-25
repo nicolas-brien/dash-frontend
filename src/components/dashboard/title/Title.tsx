@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Button from "../../button/Button";
-import { Input } from "../../input/Input";
+import Button from "components/button/Button";
+import { Input } from "components/input/Input";
 
-import Pencil from "../../../svg/pencil.svg?react";
-import Check from "../../../svg/check.svg?react";
+import Pencil from "svg/pencil.svg?react";
+import Check from "svg/check.svg?react";
 
 import "./title.scss";
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 
-import { Input } from '../../components/input/Input';
-import { Page } from '../../components/page/Page';
-import VerticalDivider from '../../components/layout/VerticalDivider';
+import { useAuth } from 'context/AuthContext';
+
+import { Input } from 'components/input/Input';
+import { Page } from 'components/page/Page';
+import VerticalDivider from 'components/layout/VerticalDivider';
 
 interface LoginPayload {
     usernameOrEmail: string;

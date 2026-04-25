@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+import classnames from 'classnames';
 
 import './select.scss';
 
@@ -39,7 +39,7 @@ export const Select: React.FC<SelectProps> = ({
 
     return (
         <div
-            className={clsx('select', {
+            className={classnames('select', {
                 'select--error': hasError,
                 'select--loading': loading,
                 'select--disabled': disabled
@@ -88,7 +88,7 @@ export const Select: React.FC<SelectProps> = ({
             {(helperText || errorText) && (
                 <div
                     id={`${id}-help`}
-                    className={clsx('select__helper', {
+                    className={classnames('select__helper', {
                         'select__helper--error': hasError
                     })}
                 >

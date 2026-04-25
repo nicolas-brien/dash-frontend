@@ -1,7 +1,7 @@
 import { auth } from './client';
 import { tokenStorage } from './token';
-import type { LoginDto, AuthResponse } from '../types/auth';
-import type { User } from '../types/user';
+import type { LoginDto, AuthResponse } from 'types/auth';
+import type { User } from 'types/user';
 
 export const authApi = {
     login: async (data: LoginDto) => {

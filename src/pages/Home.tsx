@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { Page } from "../components/page/Page";
-
-import { DashList } from "../components/dashes/dash-list/DashList";
 import { useEffect, useState } from "react";
-import { dashesApi } from "../api/dashes.api";
-import type { Dash } from "../types/dash";
+
+import { dashesApi } from "api/dashes.api";
+import type { Dash } from "types/dash";
+
+import { Page } from "components/page/Page";
+import { DashList } from "components/dashes/dash-list/DashList";
 
 export const Home = () => {
     const [dashes, setDashes] = useState<Dash[]>([]);

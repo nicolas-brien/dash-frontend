@@ -1,8 +1,8 @@
-import Button from "../../button/Button";
+import Button from "components/button/Button";
 
-import Lock from "../../../svg/lock.svg?react";
-import Unlock from "../../../svg/unlock.svg?react";
-import Plus from "../../../svg/plus.svg?react";
+import Lock from "svg/lock.svg?react";
+import Unlock from "svg/unlock.svg?react";
+import Plus from "svg/plus.svg?react";
 
 import "./toolbox.scss";
 

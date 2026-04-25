@@ -1,4 +1,4 @@
-import type { Dash } from "../../../types/dash";
+import type { Dash } from "types/dash";
 import { DashNav } from "../dash-nav/DashNav";
 import { NewDash } from "../new-dash/NewDash";
 

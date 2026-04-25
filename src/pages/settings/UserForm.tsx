@@ -1,10 +1,12 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Input } from "../../components/input/Input";
-import { Select } from "../../components/select/Select";
-import { useAuth } from "../../context/AuthContext";
-import { useUser } from "../../hooks/useUser";
 import { useEffect, useState } from "react";
-import Button from "../../components/button/Button";
+
+import { useAuth } from "context/AuthContext";
+import { useUser } from "hooks/useUser";
+
+import { Input } from "components/input/Input";
+import { Select } from "components/select/Select";
+import Button from "components/button/Button";
 
 const UserForm = () => {
     const navigate = useNavigate();

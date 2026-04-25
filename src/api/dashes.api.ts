@@ -1,5 +1,5 @@
 import { api } from './client';
-import type { Dash, CreateDashDto, UpdateDashDto } from '../types/dash';
+import type { Dash, CreateDashDto, UpdateDashDto } from 'types/dash';
 
 export const dashesApi = {
     list: () => api<Dash[]>('/dashes'),

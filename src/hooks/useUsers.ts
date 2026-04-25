@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { usersApi } from '../api/users.api';
-import type { User } from '../types/user';
-import { ApiException } from '../api/errors';
+
+import { usersApi } from 'api/users.api';
+import type { User } from 'types/user';
+import { ApiException } from 'api/errors';
 
 export const useUsers = () => {
     const [users, setUsers] = useState<User[]>([]);

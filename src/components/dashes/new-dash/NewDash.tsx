@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { dashesApi } from '../../../api/dashes.api';
-import Modal from '../../../components/modal/Modal';
-import { ModalSize, ModalVariant } from '../../../components/modal/ModalTypes';
-import { Input } from '../../input/Input';
 import { useNavigate } from 'react-router-dom';
+import { dashesApi } from 'api/dashes.api';
+
+import Modal from 'components/modal/Modal';
+import { ModalSize, ModalVariant } from 'components/modal/ModalTypes';
+import { Input } from 'components/input/Input';
 
 import "./new-dash.scss";
 

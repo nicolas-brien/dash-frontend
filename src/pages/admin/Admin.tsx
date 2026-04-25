@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { Page } from "../../components/page/Page";
-import Button from "../../components/button/Button";
+
+import { Page } from "components/page/Page";
+import Button from "components/button/Button";
 
 export const Admin = () => {
     const navigate = useNavigate();

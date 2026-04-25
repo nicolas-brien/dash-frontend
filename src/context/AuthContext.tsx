@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { authApi } from '../api/auth.api';
-import { tokenStorage } from '../api/token';
-import type { LoginDto } from '../types/auth';
+
+import { authApi } from 'api/auth.api';
+import { tokenStorage } from 'api/token';
+
+import type { LoginDto } from 'types/auth';
 
 interface AuthContextType {
     user: { id: string; username: string; email: string; fullName: string; role: string } | null;

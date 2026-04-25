@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Nav } from './nav/Nav';
-import { Home } from './pages/Home';
-import LoginForm from './pages/login/Login';
-import RegisterForm from './pages/register/Register';
-import { Settings } from './pages/settings/Settings';
-import { Networks } from './pages/admin/network/Networks';
-import Users from './pages/admin/user/Users';
-import { useAuth } from './context/AuthContext';
-import ProtectedRoute from './components/protected-route/ProtectedRoute';
-import { Admin } from './pages/admin/Admin';
-import UserForm from './pages/settings/UserForm';
-import EditUser from './pages/admin/user/EditUser';
-import { Dashboard } from './pages/dash/Dashboard';
+
+import { useAuth } from 'context/AuthContext';
+
+import ProtectedRoute from 'components/protected-route/ProtectedRoute';
+import { Nav } from 'components/nav/Nav';
+
+import { Home } from 'pages/Home';
+import LoginForm from 'pages/login/Login';
+import RegisterForm from 'pages/register/Register';
+import { Settings } from 'pages/settings/Settings';
+import { Networks } from 'pages/admin/network/Networks';
+import Users from 'pages/admin/user/Users';
+import { Admin } from 'pages/admin/Admin';
+import UserForm from 'pages/settings/UserForm';
+import EditUser from 'pages/admin/user/EditUser';
+import { Dashboard } from 'pages/dash/Dashboard';
 
 function Forms() {
   return <h1>Forms</h1>;

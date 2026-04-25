@@ -1,10 +1,9 @@
-import { useState } from "react";
 import ReactGridLayout, { useContainerWidth } from 'react-grid-layout';
 
 import { Block } from "../block/Block";
 
-import "../../../../node_modules/react-grid-layout/css/styles.css";
-import "../../../../node_modules/react-resizable/css/styles.css";
+import "node-modules/react-grid-layout/css/styles.css";
+import "node-modules/react-resizable/css/styles.css";
 
 import "./grid.scss";
 
@@ -47,7 +46,6 @@ const exampleLayout = [
 ];
 
 export const Grid = (props: GridProps) => {
-    // const [layout, setLayout] = useState(props.layout || exampleLayout);
     const { width, containerRef, mounted } = useContainerWidth();
 
     const renderBlocks = () => {

@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import VerticalDivider from "../../components/layout/VerticalDivider";
-import Button from "../../components/button/Button";
+
+import Button from "components/button/Button";
+import VerticalDivider from "components/layout/VerticalDivider";
 
 export const Settings = () => {
     const navigate = useNavigate();

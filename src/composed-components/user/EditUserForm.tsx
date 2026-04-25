@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import type { User } from "../../types/user";
-import Button from "../../components/button/Button";
-import { Input } from "../../components/input/Input";
-import { Select } from "../../components/select/Select";
+
+import type { User } from "types/user";
+
+import Button from "components/button/Button";
+import { Input } from "components/input/Input";
+import { Select } from "components/select/Select";
 
 interface EditUserFormProps {
     loading: boolean;

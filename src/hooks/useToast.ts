@@ -1,7 +1,7 @@
 import React from "react";
 
-import { ApiException, getErrorMessage } from "../api/errors";
-import { ToastContext } from "../context/ToastContext";
+import { ApiException, getErrorMessage } from "api/errors";
+import { ToastContext } from "context/ToastContext";
 
 type PromiseMessages<T = any> = {
   success?: string | ((result: T) => string);

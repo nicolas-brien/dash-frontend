@@ -1,15 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { dashesApi } from "../../api/dashes.api";
-import { useToast } from "../../hooks/useToast";
-import type { Dash } from "../../types/dash";
+import { dashesApi } from "api/dashes.api";
+import { useToast } from "hooks/useToast";
+import type { Dash } from "types/dash";
 
-import { Page } from "../../components/page/Page";
-import { Toolbox } from "../../components/dashboard/toolbox/Toolbox";
-import { Title } from "../../components/dashboard/title/Title";
-import { Controls } from "../../components/dashboard/controls/Controls";
-import { Grid } from "../../components/grid-elements/grid/Grid";
+import { Page } from "components/page/Page";
+import { Toolbox } from "components/dashboard/toolbox/Toolbox";
+import { Title } from "components/dashboard/title/Title";
+import { Controls } from "components/dashboard/controls/Controls";
+import { Grid } from "components/grid-elements/grid/Grid";
 
 const defaultDash = {
     id: '',

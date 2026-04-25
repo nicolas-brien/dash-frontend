@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+import classnames from 'classnames';
 
 import './input.scss';
 
@@ -45,7 +45,7 @@ export const Input: React.FC<InputProps> = ({
 
     return (
         <div
-            className={clsx('input', {
+            className={classnames('input', {
                 'input--error': hasError,
                 'input--loading': loading,
                 'input--disabled': disabled,
@@ -91,7 +91,7 @@ export const Input: React.FC<InputProps> = ({
             {(helperText || errorText) && (
                 <div
                     id={`${id}-help`}
-                    className={clsx('input__helper', {
+                    className={classnames('input__helper', {
                         'input__helper--error': hasError
                     })}
                 >

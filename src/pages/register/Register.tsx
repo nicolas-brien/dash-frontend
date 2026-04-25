@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Input } from '../../components/input/Input';
-import { Page } from '../../components/page/Page';
-import type { CreateUserDto } from '../../types/user';
 import { useNavigate } from 'react-router-dom';
-import { usersApi } from '../../api/users.api';
-import { ApiException } from '../../api/errors';
+
+import type { CreateUserDto } from 'types/user';
+import { usersApi } from 'api/users.api';
+import { ApiException } from 'api/errors';
+
+import { Input } from 'components/input/Input';
+import { Page } from 'components/page/Page';
 
 interface RegisterPayload {
     username: string;
