@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { dashesApi } from "api/dashes.api";
 import { useToast } from "hooks/useToast";
-import type { Block, Dash } from "types/dash";
+import type { Block, Dash, DashSettings } from "types/dash";
 
 import { Page } from "components/page/Page";
 import { Toolbox } from "components/dashboard/toolbox/Toolbox";
@@ -15,6 +15,12 @@ const defaultDash = {
     id: '',
     name: '',
     updatedAt: '',
+    settings: {
+        columns: 12,
+        rowHeight: 30,
+        displayGrid: true
+    },
+    blocks: []
 }
 
 import "./dashboard.scss";
@@ -33,7 +39,7 @@ export const Dashboard = () => {
     const fetch = async (id: string) => {
         try {
             const d = await dashesApi.getById(id);
-            setDash(d.dash);
+            setDash({ ...defaultDash, ...d.dash });
             setBlocks(d.blocks);
         } catch (e) {
             toast.error(e, "Dashboard");
@@ -44,6 +50,10 @@ export const Dashboard = () => {
     const handleNameUpdate = async (newName: string) => {
         await dashesApi.updateName(dashId, { name: newName });
         setDash({ ...dash, name: newName, updatedAt: new Date().toISOString() });
+    }
+
+    const handleUpdateSettings = (newSettings: DashSettings) => {
+        setDash(prev => ({ ...prev, settings: newSettings }));
     }
 
     const handleDeleteDashboard = async () => {
@@ -69,7 +79,8 @@ export const Dashboard = () => {
     }
 
     const handleSave = async () => {
-        await dashesApi.update(dashId, { name: dash.name, blocks });
+        await dashesApi.update(dashId, { name: dash.name, settings: dash.settings, blocks });
+        setDash({ ...dash, updatedAt: new Date().toISOString() });
     }
 
     useEffect(() => {
@@ -90,16 +101,23 @@ export const Dashboard = () => {
                         <Title title={dash.name} onTitleUpdate={handleNameUpdate} />
                     </div>
                     <div className="dashboard__settings">
-                        <Controls name={dash.name} lastUpdatedAt={dash.updatedAt} isDirty={true} onSave={handleSave} isDeleting={isDeleting} onDelete={handleDeleteDashboard} />
+                        <Controls name={dash.name} settings={dash.settings} onUpdateSettings={handleUpdateSettings} lastUpdatedAt={dash.updatedAt} isDirty={true} onSave={handleSave} isDeleting={isDeleting} onDelete={handleDeleteDashboard} />
                     </div>
                 </div>
                 <div className="dashboard__container">
-                    <Grid className="dashboard__grid" isLocked={isLocked} layout={blocks} onLayoutChange={(b) => setBlocks(b)} />
+                    <Grid
+                        className="dashboard__grid"
+                        rowHeight={dash.settings.rowHeight}
+                        cols={dash.settings.columns}
+                        displayGrid={dash.settings.displayGrid}
+                        isLocked={isLocked}
+                        layout={blocks}
+                        onLayoutChange={(b) => setBlocks(b)} />
                 </div>
                 <div className="dashboard__toolbox-container">
                     <Toolbox isLocked={isLocked} toggleLock={() => setIsLocked(!isLocked)} isDirty={true} onSave={handleSave} onAddBlock={handleAddBlock} />
                 </div>
             </div>
-        </Page>
+        </Page >
     )
 }

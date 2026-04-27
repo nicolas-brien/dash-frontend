@@ -27,12 +27,15 @@ export const NewDash = () => {
     }
 
     const handleCloseModal = () => {
-        setCreateModalOpen(false);
         setDashName('');
+        setCreateModalOpen(false);
     }
 
     return (
-        <div className="new-dash" onClick={handleNewClick}>
+        <>
+            <div className="new-dash" onClick={handleNewClick}>
+                +
+            </div>
             {<Modal
                 open={createModalOpen}
                 title='Create a new dash'
@@ -46,7 +49,6 @@ export const NewDash = () => {
                 <Input id="dash-name" label="Dashboard name" value={dashName} onChange={(e) => setDashName(e)} />
             </Modal>
             }
-            +
-        </div>
+        </>
     );
 };

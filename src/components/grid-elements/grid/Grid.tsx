@@ -1,4 +1,5 @@
 import ReactGridLayout, { useContainerWidth } from 'react-grid-layout';
+import classNames from 'classnames';
 
 import { Block } from "../block/Block";
 
@@ -14,6 +15,7 @@ interface GridProps {
     items?: number,
     rowHeight?: number,
     cols?: number,
+    displayGrid?: boolean,
     onLayoutChange: (newLayout: any) => void
 }
 
@@ -58,13 +60,20 @@ export const Grid = (props: GridProps) => {
         props.onLayoutChange(newLayout);
     }
 
+    const classes = classNames("grid",
+                    [`grid--${props.cols}`],
+                    {
+                        "grid--bordered": props.displayGrid,
+                    },
+                    props.className);
+
     return (
-        <div className={"grid " + props.className} ref={containerRef}>
+        <div className={classes} ref={containerRef} style={{ "--cols": props.cols, "--row-height": `${props.rowHeight}px` } as React.CSSProperties}>
             {mounted &&
                 <ReactGridLayout
                     width={width}
                     layout={props.layout}
-                    gridConfig={{ cols: 12, rowHeight: 30 }}
+                    gridConfig={{ cols: props.cols, rowHeight: props.rowHeight }}
                     onLayoutChange={handleLayoutChange}
                     dragConfig={{enabled: !props.isLocked}}
                     resizeConfig={{enabled: !props.isLocked}}

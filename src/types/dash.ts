@@ -2,6 +2,16 @@ export interface Dash {
     id: string;
     name: string;
     updatedAt: string;
+
+    settings: DashSettings;
+    
+    blocks: Block[];
+}
+
+export interface DashSettings {
+    columns: number;
+    rowHeight: number;
+    displayGrid: boolean;
 }
 
 export interface Block {
@@ -18,5 +28,6 @@ export interface CreateDashDto {
 
 export interface UpdateDashDto {
     name: string;
+    settings: DashSettings;
     blocks: Block[];
 }

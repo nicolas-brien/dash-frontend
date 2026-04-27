@@ -101,3 +101,5 @@ export const Input: React.FC<InputProps> = ({
         </div>
     );
 };
+
+export default Input;
